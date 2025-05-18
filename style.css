@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  perspective: 1000px;
+}
+
+.scene {
+  width: 210px;
+  height: 210px;
+  perspective: 800px;
+}
+
+.cube {
+  width: 210px;
+  height: 210px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 10s infinite linear;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+}
+
+.face {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  background: #000;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Small squares (stickers) */
+.face div {
+  background: red;
+  width: 100%;
+  height: 100%;
+}
+
+/* Color per face */
+.front  { transform: rotateY(  0deg) translateZ(105px); }
+.back   { transform: rotateY(180deg) translateZ(105px); }
+.right  { transform: rotateY( 90deg) translateZ(105px); }
+.left   { transform: rotateY(-90deg) translateZ(105px); }
+.top    { transform: rotateX( 90deg) translateZ(105px); }
+.bottom { transform: rotateX(-90deg) translateZ(105px); }
+
+/* Colors for each face */
+.frontdiv  { background:red; }
+.back div   { background: orange; }
+.right div  { background: blue; }
+.left div   { background: green; }
+.top div    { background: white; }
+.bottom div { background: yellow; }
+
+/* Reflection effect (simulated with opacity) */
+.cube:before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  width: 100%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.4;
+  transform: rotateX(90deg);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0%   { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
