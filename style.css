@@ -50,7 +50,6 @@ body {
   height: 100%;
 }
 
-/* Color per face */
 .front  { transform: rotateY(  0deg) translateZ(105px); }
 .back   { transform: rotateY(180deg) translateZ(105px); }
 .right  { transform: rotateY( 90deg) translateZ(105px); }
@@ -58,7 +57,6 @@ body {
 .top    { transform: rotateX( 90deg) translateZ(105px); }
 .bottom { transform: rotateX(-90deg) translateZ(105px); }
 
-/* Colors for each face */
 .frontdiv  { background:red; }
 .back div   { background: orange; }
 .right div  { background: blue; }
@@ -66,7 +64,6 @@ body {
 .top div    { background: white; }
 .bottom div { background: yellow; }
 
-/* Reflection effect (simulated with opacity) */
 .cube:before {
   content: "";
   position: absolute;
